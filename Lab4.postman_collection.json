@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "5ea340df-9363-4d32-836a-ab1b2b73f6db",
+		"name": "Lab4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31249082"
+	},
+	"item": [
+		{
+			"name": "Books published in a specific year",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5207/Library/getBooks?$filter=year(publishedYear) eq 1876&$orderby=publishedYear",
+					"host": [
+						"localhost"
+					],
+					"port": "5207",
+					"path": [
+						"Library",
+						"getBooks"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "year(publishedYear) eq 1876"
+						},
+						{
+							"key": "$orderby",
+							"value": "publishedYear"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request loans that are overdue",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5207/Library/GetLoans?$filter=returned eq false",
+					"host": [
+						"localhost"
+					],
+					"port": "5207",
+					"path": [
+						"Library",
+						"GetLoans"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "returned eq false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authors Groupby year",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5207/Library/GetAuthors?$apply=groupby((year(birthDate))",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5207",
+					"path": [
+						"Library",
+						"GetAuthors"
+					],
+					"query": [
+						{
+							"key": "$apply",
+							"value": "groupby((year(birthDate))"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book Count",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5207/Library/GetBooks?$count=true",
+					"host": [
+						"localhost"
+					],
+					"port": "5207",
+					"path": [
+						"Library",
+						"GetBooks"
+					],
+					"query": [
+						{
+							"key": "$count",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get books by pages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5207/Library/getBookPage?pageSize=2&pageNumber=2",
+					"host": [
+						"localhost"
+					],
+					"port": "5207",
+					"path": [
+						"Library",
+						"getBookPage"
+					],
+					"query": [
+						{
+							"key": "pageSize",
+							"value": "2"
+						},
+						{
+							"key": "pageNumber",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5207/Library/GetAuthors?$apply=groupby((year(birthDate), countryId))",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5207",
+					"path": [
+						"Library",
+						"GetAuthors"
+					],
+					"query": [
+						{
+							"key": "$apply",
+							"value": "groupby((year(birthDate), countryId))"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
